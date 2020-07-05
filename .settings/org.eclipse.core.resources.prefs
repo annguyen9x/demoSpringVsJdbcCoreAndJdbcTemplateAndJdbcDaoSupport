@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//src/main/java/edu/fa/dao/StudentJdbcDao.java=UTF-8
+encoding//src/main/java/edu/fa/dao/StudentJdbcDaoSupport.java=UTF-8
+encoding//src/main/java/edu/fa/dao/StudentJdbcTemplateDao.java=UTF-8

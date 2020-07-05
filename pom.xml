@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.fa</groupId>
+	<artifactId>StudentManagement</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>StudentManagement</name>
+	<description>StudentManagement</description>
+
+	<properties>
+		<java-version>1.8</java-version>
+		<spring-version>4.3.11.RELEASE</spring-version>
+		<derby-version>10.14.1.0</derby-version>
+	</properties>
+	<dependencies>
+		<!-- Phần depedency cho Ứng dụng java .jar không phải .war -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- Phần depedency cho Ứng dụng java .jar không phải .war -->
+		
+		<!-- Begin: depedency jdbc hỗ trợ những thứ lquan jdbc trong spring, như: DataSorce[có class Driver của DataSource] 
+		(, JdbcTemplate ???), class của Driver-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- End: depedency jdbc hỗ trợ những thứ lquan jdbc trong spring, như: DataSorce[có class Driver của DataSource] 
+		(, JdbcTemplate ???), class của Driver-->
+
+		<!-- BEGIN: Phần thêm Spring JPA -->
+		<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-jpa</artifactId> 
+			<version>1.11.9.RELEASE</version> </dependency> -->
+		<!-- Lưu ý: spring-data-jpa đã có spring-orm nhưng cần khai báo để đ/nghĩa 
+			version, tránh lỗi version không tương thích -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
+			<version>${spring-version}</version> </dependency> -->
+
+		<!-- Hibernate -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
+			<version>4.3.11.Final</version> </dependency> <dependency> <groupId>org.hibernate</groupId> 
+			<artifactId>hibernate-entitymanager</artifactId> <version>4.3.11.Final</version> 
+			</dependency> -->
+
+		<!-- Derby -->
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>${derby-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>${derby-version}</version>
+		</dependency>
+
+		<!-- MySQL -->
+		<!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+			<version>8.0.18</version> </dependency> -->
+		<!-- END: Phần thêm Spring JPA -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

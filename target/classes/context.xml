@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="edu.fa.dao"></context:component-scan>
+	<!-- quét đến package "...dao" ,tương đương <mapping class=""> trong Hibernate ??? 
+	=> khác vì ở đây load đến @Controller, còn hibernate load đến @Entity ? -->
+	
+	<!-- Begin: Trỏ DataSource"" của class đang kế thừa
+	 JdbcDaoSupport(để get ra luôn jdbcTemplate mà không cần tạo DataSource rồi JdbcTemplate như cách trước đó)
+	 đến DataSource -->
+	 <bean name="MyDaoSupport" class="edu.fa.dao.StudentJdbcDaoSupport">
+	 	<property name="dataSource" ref="dataSource" />
+	 </bean>
+	<!-- End: Trỏ DataSource"" của class đang kế thừa
+	 JdbcDaoSupport(để get ra luôn jdbcTemplate mà không cần tạo DataSource rồi JdbcTemplate như cách trước đó)
+	 đến DataSource -->
+	
+	<!-- Begin: Cấu hình DataSource -> hỗ trợ để tạo connection để nối DB: connection = dataSource.getConnection(); -->
+	<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- ... DriverManagerDataSource Nằm trong spring-jdbc-4.3...-> org.springframework.jdbc.dataSource -->
+	
+	<!-- Ở dataSource và jdbcTemplate dùng "driverClassName" -> Thay thế cho Class.forName() ở jdbc thuần -->
+		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
+		
+	<!-- Ở dataSource và jdbcTemplate dùng "url" -> Thay thế cho DriverManager.getConnection(jdbcURL) ở jdbc thuần -->
+		<property name="url" value="jdbc:derby://localhost:1527/education;create=true" />
+	</bean>
+	<!-- End: Cấu hình DataSource -> hỗ trợ để tạo connection để nối DB: connection = dataSource.getConnection(); -->
+	
+	
+</beans>
